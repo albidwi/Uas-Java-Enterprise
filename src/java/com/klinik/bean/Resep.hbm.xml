@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-Dec-2016 04:35:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.klinik.bean.Resep" table="resep" catalog="klinik" optimistic-lock="version">
+        <id name="index" type="java.lang.Integer">
+            <column name="index" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dokter" class="com.klinik.bean.Dokter" fetch="select">
+            <column name="kd_dokter" length="4" not-null="true" />
+        </many-to-one>
+        <many-to-one name="obat" class="com.klinik.bean.Obat" fetch="select">
+            <column name="kd_obat" length="10" />
+        </many-to-one>
+        <many-to-one name="pasien" class="com.klinik.bean.Pasien" fetch="select">
+            <column name="kd_pasien" length="4" not-null="true" />
+        </many-to-one>
+        <property name="kdResep" type="string">
+            <column name="kd_resep" length="4" not-null="true" />
+        </property>
+        <property name="jp" type="string">
+            <column name="jp" length="22" not-null="true" />
+        </property>
+        <property name="tglresep" type="string">
+            <column name="tglresep" length="14" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

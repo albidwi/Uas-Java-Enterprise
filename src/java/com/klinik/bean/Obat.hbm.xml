@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-Dec-2016 04:35:00 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.klinik.bean.Obat" table="obat" catalog="klinik" optimistic-lock="version">
+        <id name="kdObat" type="string">
+            <column name="kd_obat" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="nmObat" type="string">
+            <column name="nm_obat" length="25" />
+        </property>
+        <property name="jenisobat" type="string">
+            <column name="jenisobat" length="7" not-null="true" />
+        </property>
+        <property name="tglkadaluarsa" type="string">
+            <column name="tglkadaluarsa" length="14" not-null="true" />
+        </property>
+        <property name="harga" type="string">
+            <column name="harga" length="14" not-null="true" />
+        </property>
+        <set name="reseps" table="resep" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="kd_obat" length="10" />
+            </key>
+            <one-to-many class="com.klinik.bean.Resep" />
+        </set>
+    </class>
+</hibernate-mapping>
